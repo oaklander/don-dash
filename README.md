@@ -4,6 +4,7 @@
 
 ### Never, EVER run this on a port accessible to other hosts on your LAN or WAN.  This tool requires a full-access key to initiate scans, and anyone hitting the (NOT HTTPS) web interface will be able to manipulate your account.
 
+### If you don't have any CSM policies attached to the group the agent instantiates into, you'll get errors if you try to use /app/scan_with_halo.sh
 
 Set the following environment variables before you run the container.
 
