@@ -20,7 +20,7 @@ script:
 - docker kill scan_me_please
 env:
   global:
-  - SERVER_GROUP=don-dash
+  - SERVER_GROUP=don-dash-cicd
   - HALO_API_HOSTNAME=api.cloudpassage.com
   - HALO_API_PORT=443
   - DOCKER_IMAGE="awilson/don-dash:latest"
