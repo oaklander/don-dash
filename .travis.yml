@@ -13,6 +13,9 @@ script:
   -e SERVER_GROUP=$SERVER_GROUP $DOCKER_IMAGE /app/run_with_halo.sh
 - sleep 10
 - docker logs scan_me_please
+- echo `docker exec scan_me_please ls /opt`
+- echo `docker exec scan_me_please ls /opt/cloudpassage`
+- echo `docker exec scan_me_please ls /opt/cloudpassage/data`
 - export HALO_AGENT_ID=`docker exec scan_me_please cat /opt/cloudpassage/data/id`
 - echo $HALO_AGENT_ID
 - docker run -it --rm -e HALO_API_KEY=$HALO_API_KEY -e HALO_API_SECRET_KEY=$HALO_API_SECRET_KEY
