@@ -12,7 +12,7 @@ script:
   -e HALO_API_HOSTNAME=$HALO_API_HOSTNAME -e HALO_API_PORT=$HALO_API_PORT -e HALO_AGENT_KEY=$HALO_AGENT_KEY
   -e SERVER_GROUP=$SERVER_GROUP $DOCKER_IMAGE /app/run_with_halo.sh
 - sleep 10
-- docker logs scan_me_please
+- docker logs scan_me_please 
 - echo `docker exec scan_me_please ls /opt`
 - echo `docker exec scan_me_please ls /opt/cloudpassage`
 - echo `docker exec scan_me_please ls /opt/cloudpassage/data`
