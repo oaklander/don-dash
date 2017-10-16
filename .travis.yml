@@ -8,7 +8,7 @@ after_success:
 - docker push $DOCKER_IMAGE
 script:
 - docker run -it --rm $DOCKER_IMAGE py.test
-- docker run -d --name scan_me_please -e HALO_API_KEY=$HALO_API_KEY -e HALO_API_SECRET_KEY=$HALO_API_SECRET_KEY
+- docker run -it --name scan_me_please -e HALO_API_KEY=$HALO_API_KEY -e HALO_API_SECRET_KEY=$HALO_API_SECRET_KEY
   -e HALO_API_HOSTNAME=$HALO_API_HOSTNAME -e HALO_API_PORT=$HALO_API_PORT -e HALO_AGENT_KEY=$HALO_AGENT_KEY
   -e SERVER_GROUP=$SERVER_GROUP $DOCKER_IMAGE /app/run_with_halo.sh
 - sleep 30
