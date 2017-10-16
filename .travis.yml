@@ -17,7 +17,7 @@ script:
 - docker run -it --rm -e HALO_API_KEY=$HALO_API_KEY -e HALO_API_SECRET_KEY=$HALO_API_SECRET_KEY
   -e HALO_API_HOSTNAME=$HALO_API_HOSTNAME -e HALO_API_PORT=$HALO_API_PORT -e HALO_AGENT_ID=$HALO_AGENT_ID
   -e COMMIT_ID=$TRAVIS_COMMIT -e GITHUB_PROJECT=oaklander/don-dash -e GITHUB_TOKEN=$GITHUB_TOKEN
-  docker.io/ashmastaflash/squealer
+  ashmastaflash/squealer
 - docker kill scan_me_please
 env:
   global:
