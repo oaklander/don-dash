@@ -8,20 +8,16 @@ after_success:
 - docker push $DOCKER_IMAGE
 script:
 - docker run -it --rm $DOCKER_IMAGE py.test
-- docker run -it --name scan_me_please -e HALO_API_KEY=$HALO_API_KEY -e HALO_API_SECRET_KEY=$HALO_API_SECRET_KEY
+- docker run -d --name scan_me_please -e HALO_API_KEY=$HALO_API_KEY -e HALO_API_SECRET_KEY=$HALO_API_SECRET_KEY
   -e HALO_API_HOSTNAME=$HALO_API_HOSTNAME -e HALO_API_PORT=$HALO_API_PORT -e HALO_AGENT_KEY=$HALO_AGENT_KEY
   -e SERVER_GROUP=$SERVER_GROUP $DOCKER_IMAGE /app/run_with_halo.sh
-- sleep 30
-- docker logs scan_me_please
-- echo `docker exec scan_me_please ls /opt`
-- echo `docker exec scan_me_please ls /opt/cloudpassage`
-- echo `docker exec scan_me_please ls /opt/cloudpassage/data`
+- sleep 120
 - export HALO_AGENT_ID=`docker exec scan_me_please cat /opt/cloudpassage/data/id`
 - echo $HALO_AGENT_ID
 - docker run -it --rm -e HALO_API_KEY=$HALO_API_KEY -e HALO_API_SECRET_KEY=$HALO_API_SECRET_KEY
   -e HALO_API_HOSTNAME=$HALO_API_HOSTNAME -e HALO_API_PORT=$HALO_API_PORT -e HALO_AGENT_ID=$HALO_AGENT_ID
   -e COMMIT_ID=$TRAVIS_COMMIT -e GITHUB_PROJECT=oaklander/don-dash -e GITHUB_TOKEN=$GITHUB_TOKEN
-  ashmastaflash/squealer
+  docker.io/ashmastaflash/squealer
 - docker kill scan_me_please
 env:
   global:
